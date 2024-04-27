@@ -1,3 +1,4 @@
+import './style.css';
 export const Drink = ({ id, name, image, ordered, layers }) => {
   return (
     <div className="drink">

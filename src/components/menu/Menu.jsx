@@ -13,7 +13,7 @@ export const Menu = () => {
             id={0}
             name="Romano"
             ordered={false}
-            image="http://localhost:5173/assets/cups/romano.png"
+            image="http://localhost:4000/assets/cups/romano.png"
             layers={[
               {
                 color: '#fbdf5b',
