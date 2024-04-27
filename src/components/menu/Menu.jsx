@@ -1,3 +1,4 @@
+import { Drink } from '../drink';
 import './Menu.css';
 export const Menu = () => {
   return (
@@ -8,7 +9,23 @@ export const Menu = () => {
           Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
         </p>
         <div className="drinks-list">
-          <div className="drink">
+          <Drink
+            id={0}
+            name="Romano"
+            ordered={false}
+            image="http://localhost:5173/assets/cups/romano.png"
+            layers={[
+              {
+                color: '#fbdf5b',
+                label: 'citrón',
+              },
+              {
+                color: '#613916',
+                label: 'espresso',
+              },
+            ]}
+          />
+          {/* <div className="drink">
             <div className="drink__product">
               <div className="drink__cup">
                 <img src="/cups/espresso.png" />
@@ -79,7 +96,7 @@ export const Menu = () => {
               <input type="hidden" className="order-id" value="2" />
               <button className="order-btn">Objednat</button>
             </form>
-          </div>
+          </div> */}
         </div>
 
         <div className="order-detail">
