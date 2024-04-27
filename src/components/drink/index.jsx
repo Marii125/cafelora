@@ -10,29 +10,26 @@ export const Drink = ({ id, name, image, ordered, layers }) => {
         </div>
         <div className="drink__info">
           <h3>{name}</h3>
-          {layers.map((ingredients) => {
+          {layers.map((ingredients, index) => {
             return (
               <Layer
-                key={ingredients.id}
+                key={index}
                 color={ingredients.color}
                 label={ingredients.label}
               />
             );
           })}
-
-          {/*     <Layer color={'#feeeca'} label={'mléčná pěna'} /> */}
-          {/* <div className="layer">
-            <div
-              className="layer__color"
-              style={{ backgroundColor: '#613916' }}
-            ></div>
-            <div className="layer__label">espresso</div>
-          </div> */}
         </div>
       </div>
-      <form className="drink__controls">
+      <form data-id={id} data-ordered={ordered} className="drink__controls">
         <input type="hidden" className="order-id" value="0" />
-        <button className="order-btn">Objednat</button>
+        <button
+          className={
+            ordered === true ? 'order-btn order-btn--ordered' : 'order-btn '
+          }
+        >
+          {ordered === true ? 'Zrušit' : 'Objednat'}
+        </button>
       </form>
     </div>
   );

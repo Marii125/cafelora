@@ -34,3 +34,32 @@ const buttonClosed = document.querySelector('.rollout-nav');
 buttonClosed.addEventListener('click', () => {
   buttonClosed.classList.toggle('nav-closed');
 });
+
+const orderForm = document.querySelectorAll('.drink__controls button');
+
+orderForm.forEach((button) => {
+  button.addEventListener('click', async (event) => {
+    let order = true;
+    if (event.target.classList.contains('order-btn--ordered')) {
+      order = false;
+    }
+    let drinksResponse = await fetch(
+      `http://localhost:4000/api/drinks/${event.target.parentElement.dataset.id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify([
+          {
+            op: 'replace',
+            path: '/ordered',
+            value: order,
+          },
+        ]),
+      },
+    );
+
+    const data = await drinksResponse.json();
+  });
+});
